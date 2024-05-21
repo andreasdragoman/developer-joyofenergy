@@ -1,0 +1,23 @@
+2024-05-21 14:37:53.845 +03:00 [INF] User profile is available. Using 'C:\Users\P3701419\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-05-21 14:37:54.020 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:55556/swagger/index.html - null null
+2024-05-21 14:37:54.248 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:55556/swagger/index.html - 200 null text/html;charset=utf-8 231.1549ms
+2024-05-21 14:37:54.257 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:55556/_framework/aspnetcore-browser-refresh.js - null null
+2024-05-21 14:37:54.259 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:55556/_vs/browserLink - null null
+2024-05-21 14:37:54.268 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:55556/_framework/aspnetcore-browser-refresh.js - 200 13754 application/javascript; charset=utf-8 10.4124ms
+2024-05-21 14:37:54.321 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:55556/_vs/browserLink - 200 null text/javascript; charset=UTF-8 60.1666ms
+2024-05-21 14:37:54.382 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:55556/swagger/v1/swagger.json - null null
+2024-05-21 14:37:54.541 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:55556/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 159.019ms
+2024-05-21 14:39:55.348 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:55556/readings/read/smart-meter-0 - null null
+2024-05-21 14:39:55.391 +03:00 [INF] Route matched with {action = "GetReading", controller = "MeterReading"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ObjectResult GetReading(System.String) on controller JOIEnergy.Controllers.MeterReadingController (JOIEnergy).
+2024-05-21 14:39:56.621 +03:00 [INF] Seri worked. logged getting readings for smart-meter-0
+2024-05-21 14:39:58.087 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JOIEnergy.Domain.ElectricityReading, JOIEnergy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2024-05-21 14:39:58.114 +03:00 [INF] Executed action JOIEnergy.Controllers.MeterReadingController.GetReading (JOIEnergy) in 2712.6141ms
+2024-05-21 14:39:58.116 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:55556/readings/read/smart-meter-0 - 200 null application/json; charset=utf-8 2771.8286ms
+2024-05-21 14:41:45.257 +03:00 [INF] User profile is available. Using 'C:\Users\P3701419\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-05-21 14:41:45.316 +03:00 [FTL] Application startup exception
+System.InvalidOperationException: Unable to resolve service for type 'Serilog.Extensions.Hosting.DiagnosticContext' while attempting to activate 'Serilog.AspNetCore.RequestLoggingMiddleware'.
+   at Microsoft.Extensions.Internal.ActivatorUtilities.ConstructorMatcher.CreateInstance(IServiceProvider provider)
+   at Microsoft.Extensions.Internal.ActivatorUtilities.CreateInstance(IServiceProvider provider, Type instanceType, Object[] parameters)
+   at Microsoft.AspNetCore.Builder.UseMiddlewareExtensions.ReflectionMiddlewareBinder.CreateMiddleware(RequestDelegate next)
+   at Microsoft.AspNetCore.Builder.ApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Hosting.WebHost.BuildApplication()

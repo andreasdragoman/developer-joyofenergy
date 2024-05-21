@@ -10,6 +10,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using JOIEnergy.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace JOIEnergy
 {
@@ -47,6 +51,9 @@ namespace JOIEnergy
             };
 
             services.AddMvc(options => options.EnableEndpointRouting = false);
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<MyDbContext>(options => options.UseSqlServer(connectionString));
+
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IMeterReadingService, MeterReadingService>();
             services.AddTransient<IPricePlanService, PricePlanService>();
@@ -54,11 +61,15 @@ namespace JOIEnergy
             services.AddSingleton((IServiceProvider arg) => pricePlans);
             services.AddSingleton((IServiceProvider arg) => SmartMeterToPricePlanAccounts);
             services.AddSwaggerGen();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            var log = new LoggerConfiguration().ReadFrom.Configuration(Configuration).CreateLogger();
+            loggerFactory.AddSerilog(log, true);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
